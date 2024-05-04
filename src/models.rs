@@ -9,3 +9,12 @@ pub struct Contact {
     pub email: String,
     pub active: bool,
 }
+
+use crate::schema::contacts;
+
+#[derive(Insertable)]
+#[diesel(table_name = contacts)]
+pub struct NewContact<'a> {
+    pub name: &'a str,
+    pub email: &'a str,
+}
